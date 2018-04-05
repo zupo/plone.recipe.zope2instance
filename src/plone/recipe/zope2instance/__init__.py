@@ -92,7 +92,7 @@ class Recipe(Scripts):
             # Which Zope2 version do we have?
             dist = pkg_resources.get_distribution('Zope2')
             parsed = dist.parsed_version
-            major, minor = parsed[0:2]
+            major, minor = parsed.base_version.split('.')[0:2]
             major = int(major)
             # We support creating instances for 2.12, 2.13 and 4.0
             if major >= 4:
