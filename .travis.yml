@@ -3,12 +3,13 @@ python:
   - 2.7
 env:
   matrix:
-    - SETUP_TOOLS_VERSION=7.0
-    - SETUP_TOOLS_VERSION=38.7.0
-    - SETUP_TOOLS_VERSION=39.0.1
+    - SETUPTOOLS_VERSION=7.0
+    - SETUPTOOLS_VERSION=38.7.0
+    - SETUPTOOLS_VERSION=39.0.1
 
 install:
-  - sed -ie "s#setuptools = 7.0#setuptools = $SETUP_TOOLS_VERSION#" buildout.cfg
+  - pip install setuptools==$SETUPTOOLS_VERSION
+  - sed -ie "s#setuptools = 7.0#setuptools = $SETUPTOOLS_VERSION#" buildout.cfg
   - python bootstrap.py
   - bin/buildout -t 3
 script: bin/test
